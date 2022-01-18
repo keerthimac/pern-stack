@@ -1,4 +1,6 @@
-function TodoItem({ todo, deleteTodo }) {
+import EditTodo from "./EditTodo";
+
+function TodoItem({ todo, deleteTodo,editTodo }) {
   const handleDelete = () => {
     deleteTodo(todo.todo_id);
   };
@@ -7,7 +9,7 @@ function TodoItem({ todo, deleteTodo }) {
     <tr>
       <td>{todo.description}</td>
       <td>
-        <button className='btn btn-warning'>edit</button>
+        <EditTodo editTodo={editTodo} todo={todo}/>
       </td>
       <td>
         <button onClick={handleDelete} className='btn btn-danger'>

@@ -49,11 +49,36 @@ function App() {
       console.error(err.message);
     }
   };
+
+  //Edit todo
+  const editTodo = async (id, todo) => {
+    try {
+      console.log(id, todo);
+      const response = await fetch(`/todos/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(todo),
+      });
+      const data = await response.json();
+      setTodos(
+        todos.map((todo) =>
+          todo.todo_id === id ? { ...todo, ...data } : todo
+        )
+      );
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+
+
   return (
     <>
       <div className='container mt-5'>
         <InputTodos addTodo={addTodo} />
-        <ListTodos todos={todos} deleteTodo={deleteTodo} />
+        <ListTodos todos={todos} deleteTodo={deleteTodo} editTodo={editTodo} />
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-function ListTodos({ todos, deleteTodo }) {
+function ListTodos({ todos, deleteTodo, editTodo }) {
   return (
     <div>
       <table className='table mt-5'>
@@ -13,7 +13,7 @@ function ListTodos({ todos, deleteTodo }) {
         </thead>
         <tbody>
           {todos.map((todo) => (
-            <TodoItem key={todo.todo_id} todo={todo} deleteTodo={deleteTodo} />
+            <TodoItem key={todo.todo_id} todo={todo} deleteTodo={deleteTodo} editTodo={editTodo} />
             // <tr key={todo.id}>
             //   <td>{todo.description}</td>
             //   <td>edit</td>
