@@ -12,7 +12,7 @@ app.use(express.json());
 //GET all todos
 app.get("/todos", async (req, res) => {
   try {
-    const todos = await pool.query("SELECT * FROM todo");
+    const todos = await pool.query("SELECT * FROM todo ORDER BY todo_id DESC");
     res.json(todos.rows);
   } catch (err) {
     console.error(err.message);

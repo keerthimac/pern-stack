@@ -14,7 +14,8 @@ function App() {
     try {
       const response = await fetch("/todos");
       const data = await response.json();
-      setTodos(data, ...todos);
+      console.log(data);
+      setTodos(data);
     } catch (err) {
       console.error(err.message);
     }
@@ -31,7 +32,7 @@ function App() {
         body: JSON.stringify(todo),
       });
       const data = await response.json();
-      setTodos([...todos, data]);
+      setTodos([data, ...todos]);
     } catch (err) {
       console.error(err.message);
     }
@@ -63,16 +64,12 @@ function App() {
       });
       const data = await response.json();
       setTodos(
-        todos.map((todo) =>
-          todo.todo_id === id ? { ...todo, ...data } : todo
-        )
+        todos.map((todo) => (todo.todo_id === id ? { ...todo, ...data } : todo))
       );
     } catch (err) {
       console.error(err.message);
     }
   };
-
-
 
   return (
     <>

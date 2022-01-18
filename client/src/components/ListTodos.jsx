@@ -13,7 +13,12 @@ function ListTodos({ todos, deleteTodo, editTodo }) {
         </thead>
         <tbody>
           {todos.map((todo) => (
-            <TodoItem key={todo.todo_id} todo={todo} deleteTodo={deleteTodo} editTodo={editTodo} />
+            <TodoItem
+              key={todo.todo_id}
+              todo={todo}
+              deleteTodo={deleteTodo}
+              editTodo={editTodo}
+            />
             // <tr key={todo.id}>
             //   <td>{todo.description}</td>
             //   <td>edit</td>
